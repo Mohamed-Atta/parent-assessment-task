@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { UserService } from './services/user.service';
-import { User } from './User';
+import { User } from './modules/User';
+import { HttpResponse } from './modules/HttpResponse';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,9 @@ export class AppComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((res: any) => {
-      this.users = res.data
+    this.userService.getUsers(3).subscribe((res: HttpResponse) => {
+      this.users = res.data as User[]
+      console.log('res', res, this.users)
     });
   }
 }
