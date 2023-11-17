@@ -4,11 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { UserService } from './services/user.service';
 import { User } from './modules/User';
 import { HttpResponse } from './modules/HttpResponse';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers:  [ UserService ]

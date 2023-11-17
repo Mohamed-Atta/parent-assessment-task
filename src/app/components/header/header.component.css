@@ -1,0 +1,22 @@
+.header {
+  height: 70px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+.button-item {
+  margin-left: 8px;
+}
+
+.nav-item {
+  padding: 8px;
+}
+
+@media only screen and (max-width: 992px) {
+  .header {
+    height: 270px;
+  }
+
+  .button-item {
+    margin-left: 0;
+  }
+}
