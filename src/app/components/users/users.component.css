@@ -1,0 +1,19 @@
+.users-card {
+  padding: 0 150px; 
+  border-radius: 10px;
+  background-color: #FFF;
+  margin-top: 30px;
+}
+
+.users-card-inner {
+  padding: 15px;
+}
+
+.users-card-title {
+  color: #7F8C8D;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 15px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}

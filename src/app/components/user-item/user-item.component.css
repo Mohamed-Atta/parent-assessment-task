@@ -1,0 +1,39 @@
+.user-item-container {
+  height: 105px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.user-avatar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.user-avatar-title {
+  margin-left: 10px;
+  margin-bottom: 0;
+  color: #34495E;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 18px;
+}
+
+.user-avatar-img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.user-item-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+}

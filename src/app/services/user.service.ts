@@ -31,5 +31,8 @@ export class UserService {
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.apiUrl, user);
   }
+
+  getUserFullName(user: User): string {
+    return `${user.first_name} ${user.last_name}`;
+  }
 }
- 

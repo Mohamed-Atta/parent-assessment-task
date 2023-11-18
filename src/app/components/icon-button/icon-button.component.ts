@@ -2,14 +2,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-button',
+  selector: 'app-icon-button',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './button.component.html',
-  styleUrl: './button.component.css'
+  templateUrl: './icon-button.component.html',
+  styleUrl: './icon-button.component.css'
 })
-export class ButtonComponent {
-  @Input() text!: string;
+export class IconButtonComponent {
+  @Input() iconPath!: string;
   @Output() btnClick = new EventEmitter();
 
   constructor() {}
