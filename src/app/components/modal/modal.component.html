@@ -1,0 +1,51 @@
+<div class="modal">
+  <div class="modal-content">
+    <div class="custom-modal-body">
+      <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="field">
+          <label class="label">name</label>
+          <input
+            type="text"
+            class="input"
+            formControlName="name"
+            [class.invalid]="
+              registerForm.get('name')?.invalid &&
+              (registerForm.get('name')?.dirty ||
+                registerForm.get('name')?.touched ||
+                isSubmitted)
+            "
+          />
+        </div>
+        <div class="field">
+          <label class="label">Job Title</label>
+          <input
+            type="text"
+            class="input"
+            formControlName="jobTitle"
+            [class.invalid]="
+              registerForm.get('jobTitle')?.invalid &&
+              (registerForm.get('jobTitle')?.dirty ||
+                registerForm.get('jobTitle')?.touched ||
+                isSubmitted)
+            "
+          />
+        </div>
+      
+        <div>
+          <button type="submit" class="button" >Login</button>
+        </div>
+      </form>
+    </div>
+    <div class="custom-modal-footer">
+      <app-button
+        class="w-100"
+        [isFullWidth]="true"
+        btnType="button"
+        kind="secondary"
+        text="Cancel"
+        (btnClick)="onClickClose()"
+      ></app-button>
+      <app-button class="w-100" type="submit" [isFullWidth]="true" kind="primary" text="Save" [btnDisabled]="!isFormValid()"></app-button>
+    </div>
+  </div>
+</div>

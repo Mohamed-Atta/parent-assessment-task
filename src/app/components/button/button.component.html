@@ -1,1 +1,5 @@
-<button type="button" class="btn custom-btn">{{ text }}</button>
+<button [type]="btnType" class="btn custom-btn" [disabled]="btnDisabled" [ngClass]="{
+  'w-100': isFullWidth,
+  'custom-btn-primary': kind === 'primary',
+  'custom-btn-secondary': kind === 'secondary',
+}" (click)="onClick()">{{ text }}</button>

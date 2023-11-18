@@ -4,3 +4,5 @@
     <app-user-item *ngFor="let user of users" [user]="user"></app-user-item>
   </div>
 </div>
+<button (click)="toggleModal()">Trigger modal</button>
+<app-modal *ngIf="showModal" (close)="toggleModal()"></app-modal>

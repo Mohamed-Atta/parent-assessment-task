@@ -10,6 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ButtonComponent {
   @Input() text!: string;
+  @Input() kind!: 'primary' | 'secondary';
+  @Input() isFullWidth!: boolean;
+  @Input() btnType!: string;
+  @Input() btnDisabled!: boolean;
   @Output() btnClick = new EventEmitter();
 
   constructor() {}
