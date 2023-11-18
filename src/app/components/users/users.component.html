@@ -5,4 +5,5 @@
   </div>
 </div>
 <button (click)="toggleModal()">Trigger modal</button>
+<button (click)="showSuccess()">Show Toast</button>
 <app-modal *ngIf="showModal" (close)="toggleModal()"></app-modal>

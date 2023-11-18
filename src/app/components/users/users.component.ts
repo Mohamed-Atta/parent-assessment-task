@@ -5,6 +5,7 @@ import { User } from '../../modules/User';
 import { HttpResponse } from '../../modules/HttpResponse';
 import { UserItemComponent } from '../user-item/user-item.component';
 import { ModalComponent } from '../modal/modal.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-users',
@@ -17,7 +18,7 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
   showModal: boolean = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.userService.getUsers(1).subscribe((res: HttpResponse) => {
@@ -31,6 +32,10 @@ export class UsersComponent implements OnInit {
 
   toggleModal() {
     this.showModal = !this.showModal
+  }
+
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 }
  
