@@ -8,6 +8,7 @@ import { ModalComponent } from '../modal/modal.component';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingComponent } from '../loading/loading.component';
 import { ButtonComponent } from '../button/button.component';
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-users',
@@ -18,16 +19,19 @@ import { ButtonComponent } from '../button/button.component';
     ModalComponent,
     LoadingComponent,
     ButtonComponent,
+    UserComponent
   ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css',
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];
-  showModal: boolean = true;
+  showModal: boolean = false;
   loading: boolean = true;
   pageNumber: number = 1;
   totalPages: number = 0;
+  showSelectedUser: boolean = false;
+  selectedUser: User | undefined;
 
   constructor(
     private userService: UserService,
@@ -60,12 +64,21 @@ export class UsersComponent implements OnInit {
         this.loading = false;
       });
   }
-
+*
   getUserFullName(user: User) {
     return this.userService.getUserFullName(user);
   }
 
   toggleModal() {
     this.showModal = !this.showModal;
+  }
+
+  selectUser(user: User): void {
+    this.selectedUser = Object.assign(user);
+    this.showSelectedUser = true;
+  }
+
+  closeSelectedUserView() {
+    this.showSelectedUser = false;
   }
 }

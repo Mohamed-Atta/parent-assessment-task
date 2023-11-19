@@ -14,8 +14,10 @@
       *ngFor="let user of users; last as isLast"
       [isLast]="isLast"
       [user]="user"
+      (click)="selectUser(user)"
     ></app-user-item>
     <app-loading *ngIf="loading"></app-loading>
   </div>
+  <app-user *ngIf="showSelectedUser" [user]="selectedUser" (close)="closeSelectedUserView()"></app-user>
 </div>
 <app-modal *ngIf="showModal" (close)="toggleModal()"></app-modal>

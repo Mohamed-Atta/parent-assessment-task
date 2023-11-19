@@ -1,0 +1,28 @@
+<div class="user-card">
+  <div class="user-card-close-wrapper">
+    <span class="user-card-close" (click)="onClickClose()">&times;</span>
+  </div>
+  <div *ngIf="user; else no_user" class="user-card-container">
+    <img
+      class="user-card-img"
+      [src]="user.avatar"
+      [alt]="getUserFullName(user)"
+    />
+    <p class="user-card-title">{{ getUserFullName(user) }}</p>
+    <div class="user-card-actions">
+      <app-button
+      iconLeft="/assets/images/edit-icon.svg"
+      text="Edit"
+      kind="primary"
+      (btnClick)="onEditUser()"
+    ></app-button>
+    <app-button
+    iconLeft="/assets/images/delete-icon.svg"
+    text="Delete"
+    kind="secondary"
+    (btnClick)="onDeleteUser()"
+  ></app-button>
+    </div>
+  </div>
+  <ng-template #no_user>No User selected!</ng-template>
+</div>
