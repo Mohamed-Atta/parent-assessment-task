@@ -7,17 +7,24 @@ import { UserItemComponent } from '../user-item/user-item.component';
 import { ModalComponent } from '../modal/modal.component';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingComponent } from '../loading/loading.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, UserItemComponent, ModalComponent, LoadingComponent],
+  imports: [
+    CommonModule,
+    UserItemComponent,
+    ModalComponent,
+    LoadingComponent,
+    ButtonComponent,
+  ],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css',
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];
-  showModal: boolean = false;
+  showModal: boolean = true;
   loading: boolean = true;
   pageNumber: number = 1;
   totalPages: number = 0;
@@ -60,9 +67,5 @@ export class UsersComponent implements OnInit {
 
   toggleModal() {
     this.showModal = !this.showModal;
-  }
-
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 }

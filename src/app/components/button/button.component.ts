@@ -14,6 +14,7 @@ export class ButtonComponent {
   @Input() isFullWidth!: boolean;
   @Input() btnType!: string;
   @Input() btnDisabled!: boolean;
+  @Input() iconLeft!: string;
   @Output() btnClick = new EventEmitter();
 
   constructor() {}

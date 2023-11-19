@@ -1,3 +1,12 @@
+<div class="users-hero-section">
+  Users List
+  <app-button
+    iconLeft="/assets/images/plus-icon.png"
+    text="New User"
+    kind="primary"
+    (btnClick)="toggleModal()"
+  ></app-button>
+</div>
 <div class="container users-card">
   <div class="users-card-inner">
     <p class="users-card-title">User</p>
@@ -9,6 +18,4 @@
     <app-loading *ngIf="loading"></app-loading>
   </div>
 </div>
-<button (click)="toggleModal()">Trigger modal</button>
-<button (click)="showSuccess()">Show Toast</button>
 <app-modal *ngIf="showModal" (close)="toggleModal()"></app-modal>

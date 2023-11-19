@@ -1,12 +1,17 @@
 <div class="modal">
   <div class="modal-content">
-    <div class="custom-modal-body">
-      <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="field">
-          <label class="label">name</label>
+    <div class="custom-modal-header">
+      <div class="user-avatar-wrapper">
+        <img src="/assets/images/user-icon.svg" alt="User icon">
+      </div>
+    </div>
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="custom-modal-body">
+        <div class="form-field mb-3">
+          <label class="form-label">Name</label>
           <input
             type="text"
-            class="input"
+            class="form-input"
             formControlName="name"
             [class.invalid]="
               registerForm.get('name')?.invalid &&
@@ -16,11 +21,11 @@
             "
           />
         </div>
-        <div class="field">
-          <label class="label">Job Title</label>
+        <div class="form-field">
+          <label class="form-label">Job Title</label>
           <input
             type="text"
-            class="input"
+            class="form-input"
             formControlName="jobTitle"
             [class.invalid]="
               registerForm.get('jobTitle')?.invalid &&
@@ -30,22 +35,25 @@
             "
           />
         </div>
-      
-        <div>
-          <button type="submit" class="button" >Login</button>
-        </div>
-      </form>
-    </div>
-    <div class="custom-modal-footer">
-      <app-button
-        class="w-100"
-        [isFullWidth]="true"
-        btnType="button"
-        kind="secondary"
-        text="Cancel"
-        (btnClick)="onClickClose()"
-      ></app-button>
-      <app-button class="w-100" type="submit" [isFullWidth]="true" kind="primary" text="Save" [btnDisabled]="!isFormValid()"></app-button>
-    </div>
+      </div>
+      <div class="custom-modal-footer">
+        <app-button
+          class="w-100"
+          [isFullWidth]="true"
+          btnType="button"
+          kind="secondary"
+          text="Cancel"
+          (btnClick)="onClickClose()"
+        ></app-button>
+        <app-button
+          class="w-100"
+          btnType="submit"
+          [isFullWidth]="true"
+          kind="primary"
+          text="Add"
+          [btnDisabled]="!isFormValid()"
+        ></app-button>
+      </div>
+    </form>
   </div>
 </div>

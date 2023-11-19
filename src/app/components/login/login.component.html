@@ -7,10 +7,10 @@
     <p class="login-form-subtitle">Please login to access your <span [ngStyle]="{'color': '#8E44AD'}">Spaces</span> Dashboard</p>
     <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="login-form-field mb-3">
-        <label class="login-form-label">Email</label>
+        <label class="form-label">Email</label>
         <input
           type="text"
-          class="login-form-input"
+          class="form-input"
           formControlName="email"
           [class.invalid]="
             registerForm.get('email')?.invalid &&
@@ -20,11 +20,11 @@
           "
         />
       </div>
-      <div class="login-form-field">
-        <label class="login-form-label">Password</label>
+      <div class="form-field">
+        <label class="form-label">Password</label>
         <input
           type="password"
-          class="login-form-input"
+          class="form-input"
           formControlName="password"
           [class.invalid]="
             registerForm.get('password')?.invalid &&
@@ -41,4 +41,3 @@
     </form>
   </div>
 </div>
-{{ authService.isAuthenticated$ | async }}
