@@ -11,7 +11,22 @@
         <a class="nav-link">CONTACT</a>
       </li>
       <li class="nav-item button-item">
-        <app-button btnType="button" kind="primary" text="LOGIN"></app-button>
+        <app-button
+          *ngIf="authService.isAuthenticated$ | async; else enquire_btn"
+          btnType="button"
+          kind="primary"
+          text="ENQUIRE"
+          (btnClick)="onClickEnquire()"
+        ></app-button>
+
+        <ng-template #enquire_btn
+          ><app-button
+            btnType="button"
+            kind="primary"
+            text="LOGIN"
+            (btnClick)="onClickLogin()"
+          ></app-button
+        ></ng-template>
       </li>
     </ul>
   </div>
