@@ -1,14 +1,29 @@
-<div class="user-item-container" [ngClass]="{
-  'user-item-container-border': !isLast,
-}">
+<div
+  class="user-item-container"
+  [ngClass]="{
+    'user-item-container-border': !isLast,
+    'user-item-container-active': isActive
+  }"
+>
   <div class="user-item-info">
     <div class="user-avatar-container">
-      <img class="user-avatar-img" [src]="user.avatar" [alt]="getUserFullName(user)">
-      <p class="user-avatar-title">{{ getUserFullName(user) }}</p>
+      <img
+        class="user-avatar-img"
+        [src]="user.avatar"
+        [alt]="getUserFullName(user)"
+      />
+      <p
+        class="user-avatar-title"
+        [ngStyle]="{ color: isActive ? '#FFF' : '#34495E' }"
+      >
+        {{ getUserFullName(user) }}
+      </p>
     </div>
   </div>
-  <div class="user-item-actions">
+  <div *ngIf="!isActive" class="user-item-actions">
     <app-icon-button iconPath="/assets/images/edit-icon.svg"></app-icon-button>
-    <app-icon-button iconPath="/assets/images/delete-icon.svg"></app-icon-button>
+    <app-icon-button
+      iconPath="/assets/images/delete-icon.svg"
+    ></app-icon-button>
   </div>
 </div>

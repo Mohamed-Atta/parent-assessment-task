@@ -78,6 +78,10 @@ export class UsersComponent implements OnInit {
     this.showSelectedUser = true;
   }
 
+  isCurrentUserActive(user: User): boolean {
+    return user.id === this.selectedUser?.id
+  }
+
   closeSelectedUserView() {
     this.showSelectedUser = false;
   }

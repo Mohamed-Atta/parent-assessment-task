@@ -6,6 +6,12 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  padding: 0 15px;
+}
+
+.user-item-container-active {
+  background-color: #8E44AD;
+  border-radius: 10px;
 }
 
 .user-item-container-border {
@@ -22,7 +28,6 @@
 .user-avatar-title {
   margin-left: 10px;
   margin-bottom: 0;
-  color: #34495E;
   font-size: 15px;
   letter-spacing: 0;
   line-height: 18px;

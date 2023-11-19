@@ -14,6 +14,7 @@ import { IconButtonComponent } from '../icon-button/icon-button.component';
 export class UserItemComponent {
   @Input() user!: User;
   @Input() isLast!: boolean;
+  @Input() isActive!: boolean;
 
   constructor(private userService: UserService) {}
 
