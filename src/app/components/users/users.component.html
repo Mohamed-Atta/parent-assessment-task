@@ -1,5 +1,8 @@
 <div class="users-hero-section">
-  Users List
+  <div>
+    <p class="user-hero-breadcrumbs">Home <span [ngStyle]="{'color': '#000'}">/</span> Dashboard</p>
+    <h1 class="user-hero-title">Users List</h1>
+  </div>
   <app-button
     iconLeft="/assets/images/plus-icon.png"
     text="New User"
@@ -9,7 +12,10 @@
 </div>
 <div class="container users-card">
   <div class="users-card-inner">
-    <p class="users-card-title">User</p>
+    <div class="users-card-titles">
+      <p class="users-card-title">User</p>
+      <p class="users-card-title ">Actions</p>
+    </div>
     <app-user-item
       *ngFor="let user of users; last as isLast"
       [isLast]="isLast"

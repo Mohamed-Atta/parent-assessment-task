@@ -85,5 +85,6 @@ export class UsersComponent implements OnInit {
 
   closeSelectedUserView() {
     this.showSelectedUser = false;
+    this.selectedUser = undefined;
   }
 }
