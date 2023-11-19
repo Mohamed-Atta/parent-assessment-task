@@ -32,4 +32,8 @@ export class AuthService {
     this._isAuthenticated$.next(false);
     localStorage.removeItem('token');
   }
+
+  isUserAuthenticated(): boolean {
+    return Boolean(localStorage.getItem('token'))
+  }
 }
