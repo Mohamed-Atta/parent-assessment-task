@@ -17,14 +17,18 @@ export class UserService {
     return this.http.get<HttpResponse>(url);
   }
 
-  deleteUser(user: User): Observable<User> {
-    const url = `${this.apiUrl}/${user.id}`;
+  deleteUser(user: User | undefined): Observable<User> {
+    const url = `${this.apiUrl}/${user?.id}`;
     return this.http.delete<User>(url);
   }
 
-  updateUser(user: User): Observable<User> {
-    const url = `${this.apiUrl}/${user.id}`;
-    return this.http.put<User>(url, user);
+  updateUser(
+    id: number | undefined,
+    name: string | null | undefined,
+    job: string | null | undefined
+  ): Observable<User> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<User>(url, { name, job });
   }
 
   addUser(
@@ -34,7 +38,7 @@ export class UserService {
     return this.http.post<any>(this.apiUrl, { name, job });
   }
 
-  getUserFullName(user: User): string {
-    return `${user.first_name} ${user.last_name}`;
+  getUserFullName(user: User | undefined): string {
+    return `${user?.first_name} ${user?.last_name}`;
   }
 }

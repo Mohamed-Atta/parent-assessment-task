@@ -45,3 +45,21 @@
   border-radius: 50%;
   margin-top: -70px;
 }
+
+.user-avatar-img {
+  border-radius: 50%;
+}
+
+.delete-user-title {
+  color: #7F8C8D;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.delete-user-subtitle {
+  color: #34495E;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+}

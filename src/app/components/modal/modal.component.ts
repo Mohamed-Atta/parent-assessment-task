@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../../modules/User';
 
 @Component({
   selector: 'app-modal',
@@ -13,7 +14,9 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
 })
-export class ModalComponent {
+export class ModalComponent implements OnInit {
+  @Input() user!: User | undefined;
+  @Input() mode!: 'add' | 'edit' | 'delete';
   @Output() close = new EventEmitter();
 
   registerForm = this.formBuilder.group({
@@ -25,17 +28,35 @@ export class ModalComponent {
   constructor(
     private formBuilder: FormBuilder,
     public authService: AuthService,
-    private userService: UserService,
+    public userService: UserService,
     private toastr: ToastrService
   ) {}
+  ngOnInit(): void {
+    if (this.mode === 'edit' && Boolean(this.user)) {
+      this.registerForm.patchValue({
+        jobTitle: 'Manager', // User endpoint doesn't return job title
+        name: this.userService.getUserFullName(this.user)
+      })
+    }
+  }
 
   onSubmit(): void {
-    this.userService
+    if (this.mode === 'edit') {
+      this.userService
+      .updateUser(this.user?.id, this.registerForm.value.name, this.registerForm.value.jobTitle)
+      .subscribe(() => {
+        this.close.emit();
+        this.toastr.success('User is updated successfully', 'Updating User');
+      });
+    }
+    else if (this.mode === 'add') {
+      this.userService
       .addUser(this.registerForm.value.name, this.registerForm.value.jobTitle)
       .subscribe(() => {
         this.close.emit();
-        this.toastr.success('Adding User', 'User is added successfully');
+        this.toastr.success('User is added successfully', 'Adding User');
       });
+    }
     this.isSubmitted = true;
   }
 
@@ -44,6 +65,15 @@ export class ModalComponent {
       this.registerForm.get('name')?.invalid ||
         this.registerForm.get('jobTitle')?.invalid
     );
+  }
+
+  onDeleteUser(): void {
+    this.userService
+      .deleteUser(this.user)
+      .subscribe(() => {
+        this.close.emit();
+        this.toastr.success('User is deleted successfully', 'Deleting User');
+      });
   }
 
   onClickClose() {

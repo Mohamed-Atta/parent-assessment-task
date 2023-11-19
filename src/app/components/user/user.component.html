@@ -26,3 +26,4 @@
   </div>
   <ng-template #no_user>No User selected!</ng-template>
 </div>
+<app-modal *ngIf="showModal" [user]="user" (close)="toggleModal()" [mode]="mode"></app-modal>

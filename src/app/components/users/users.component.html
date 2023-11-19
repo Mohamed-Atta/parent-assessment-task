@@ -21,4 +21,4 @@
   </div>
   <app-user *ngIf="showSelectedUser" [user]="selectedUser" (close)="closeSelectedUserView()"></app-user>
 </div>
-<app-modal *ngIf="showModal" (close)="toggleModal()"></app-modal>
+<app-modal *ngIf="showModal" (close)="toggleModal()" [user]="selectedUser" [mode]="mode"></app-modal>

@@ -32,6 +32,7 @@ export class UsersComponent implements OnInit {
   totalPages: number = 0;
   showSelectedUser: boolean = false;
   selectedUser: User | undefined;
+  mode: 'add' | 'edit' | 'delete' = 'add';
 
   constructor(
     private userService: UserService,
