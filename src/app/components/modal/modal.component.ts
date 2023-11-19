@@ -35,27 +35,45 @@ export class ModalComponent implements OnInit {
     if (this.mode === 'edit' && Boolean(this.user)) {
       this.registerForm.patchValue({
         jobTitle: 'Manager', // User endpoint doesn't return job title
-        name: this.userService.getUserFullName(this.user)
-      })
+        name: this.userService.getUserFullName(this.user),
+      });
     }
   }
 
   onSubmit(): void {
     if (this.mode === 'edit') {
       this.userService
-      .updateUser(this.user?.id, this.registerForm.value.name, this.registerForm.value.jobTitle)
-      .subscribe(() => {
-        this.close.emit();
-        this.toastr.success('User is updated successfully', 'Updating User');
-      });
-    }
-    else if (this.mode === 'add') {
+        .updateUser(
+          this.user?.id,
+          this.registerForm.value.name,
+          this.registerForm.value.jobTitle
+        )
+        .subscribe({
+          next: () => {
+            this.close.emit();
+            this.toastr.success(
+              'User is updated successfully',
+              'Updating User'
+            );
+          },
+          error: () => {
+            this.close.emit();
+            this.toastr.error('Failed to update user!', 'Updating User');
+          },
+        });
+    } else if (this.mode === 'add') {
       this.userService
-      .addUser(this.registerForm.value.name, this.registerForm.value.jobTitle)
-      .subscribe(() => {
-        this.close.emit();
-        this.toastr.success('User is added successfully', 'Adding User');
-      });
+        .addUser(this.registerForm.value.name, this.registerForm.value.jobTitle)
+        .subscribe({
+          next: () => {
+            this.close.emit();
+            this.toastr.success('User is added successfully', 'Adding User');
+          },
+          error: () => {
+            this.close.emit();
+            this.toastr.error('Failed to add user!', 'Adding User');
+          },
+        });
     }
     this.isSubmitted = true;
   }
@@ -68,12 +86,10 @@ export class ModalComponent implements OnInit {
   }
 
   onDeleteUser(): void {
-    this.userService
-      .deleteUser(this.user)
-      .subscribe(() => {
-        this.close.emit();
-        this.toastr.success('User is deleted successfully', 'Deleting User');
-      });
+    this.userService.deleteUser(this.user).subscribe(() => {
+      this.close.emit();
+      this.toastr.success('User is deleted successfully', 'Deleting User');
+    });
   }
 
   onClickClose() {
