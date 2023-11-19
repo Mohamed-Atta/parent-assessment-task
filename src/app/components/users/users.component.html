@@ -1,7 +1,12 @@
 <div class="container users-card">
   <div class="users-card-inner">
     <p class="users-card-title">User</p>
-    <app-user-item *ngFor="let user of users" [user]="user"></app-user-item>
+    <app-user-item
+      *ngFor="let user of users; last as isLast"
+      [isLast]="isLast"
+      [user]="user"
+    ></app-user-item>
+    <app-loading *ngIf="loading"></app-loading>
   </div>
 </div>
 <button (click)="toggleModal()">Trigger modal</button>

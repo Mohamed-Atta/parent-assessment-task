@@ -1,4 +1,6 @@
-<div class="user-item-container">
+<div class="user-item-container" [ngClass]="{
+  'user-item-container-border': !isLast,
+}">
   <div class="user-item-info">
     <div class="user-avatar-container">
       <img class="user-avatar-img" [src]="user.avatar" [alt]="getUserFullName(user)">
